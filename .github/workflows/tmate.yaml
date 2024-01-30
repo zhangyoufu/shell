@@ -20,7 +20,7 @@ on:
 permissions: {}
 jobs:
   main:
-    runs-on: inputs.runs-on
+    runs-on: ${{ inputs.runs-on }}
     steps:
     - name: Dump github context
       env:
