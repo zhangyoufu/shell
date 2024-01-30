@@ -1,0 +1,88 @@
+on:
+  workflow_dispatch:
+    inputs:
+      runs-on:
+        required: true
+        type: choice
+        default: ubuntu-latest
+        options:
+        - ubuntu-latest
+        - ubuntu-22.04
+        - ubuntu-20.04
+        - windows-latest
+        - windows-2022
+        - windows-2019
+        - macos-latest
+        - macos-14
+        - macos-13
+        - macos-12
+        - macos-11
+permissions: {}
+jobs:
+  main:
+    runs-on: inputs.runs-on
+    steps:
+    - name: Dump github context
+      env:
+        CONTEXT: ${{ toJson(github) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump env context
+      env:
+        CONTEXT: ${{ toJson(env) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump vars context
+      env:
+        CONTEXT: ${{ toJson(vars) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump job context
+      env:
+        CONTEXT: ${{ toJson(job) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump jobs context
+      env:
+        CONTEXT: ${{ toJson(jobs) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump steps context
+      env:
+        CONTEXT: ${{ toJson(steps) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump runner context
+      env:
+        CONTEXT: ${{ toJson(runner) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump secrets context
+      env:
+        CONTEXT: ${{ toJson(secrets) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump strategy context
+      env:
+        CONTEXT: ${{ toJson(strategy) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump matrix context
+      env:
+        CONTEXT: ${{ toJson(matrix) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump needs context
+      env:
+        CONTEXT: ${{ toJson(needs) }}
+      run: echo "$CONTEXT"
+
+    - name: Dump inputs context
+      env:
+        CONTEXT: ${{ toJson(inputs) }}
+      run: echo "$CONTEXT"
+
+    - name: IP Address
+      run: curl -fsS https://cloudflare.com/cdn-cgi/trace
+
+    - uses: mxschmitt/action-tmate@v3
