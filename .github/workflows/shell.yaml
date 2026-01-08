@@ -22,6 +22,11 @@ on:
         - macos-14
         - macos-15-intel
         - macos-13
+      credentials:
+        type: string
+        description: 'Provide credentials in username:password format to access the terminal.'
+        required: true
+
 permissions: {}
 jobs:
   main:
@@ -92,3 +97,5 @@ jobs:
       run: curl -fsS https://cloudflare.com/cdn-cgi/trace
 
     - uses: zhangyoufu/action-debug@main
+      with:
+        credentials: ${{ inputs.credentials }}
