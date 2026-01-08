@@ -91,4 +91,4 @@ jobs:
     - name: IP Address
       run: curl -fsS https://cloudflare.com/cdn-cgi/trace
 
-    - uses: zhangyoufu/action-debug
+    - uses: zhangyoufu/action-debug@main
