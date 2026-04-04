@@ -32,6 +32,9 @@ jobs:
   main:
     runs-on: ${{ inputs.runs-on }}
     steps:
+    - name: Dump environment variables
+      run: env | sort
+
     - name: Dump github context
       env:
         CONTEXT: ${{ toJson(github) }}
